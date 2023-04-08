@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddNewRule" xml:space="preserve">
-    <value>新しい配送・輸送ルールを追加</value>
+    <value>新しいルールを追加</value>
   </data>
   <data name="CheckTargetSize" xml:space="preserve">
     <value>商業区画のサイズを指定</value>
