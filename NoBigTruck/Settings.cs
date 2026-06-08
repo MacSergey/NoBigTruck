@@ -171,7 +171,7 @@ namespace NoBigTruck
 
             var useSize = AddUseSizeProperty(parent);
             var maxLength = AddSizeProperty(parent, MaxLength, Localize.MaxLength);
-            var maxWidth = AddSizeProperty(parent, MaxLength, Localize.MaxWidth);
+            var maxWidth = AddSizeProperty(parent, MaxWidth, Localize.MaxWidth);
 
             components.Add(useSize);
             components.Add(maxLength);

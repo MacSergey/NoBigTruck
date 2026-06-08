@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Resources;
 using static ColossalFramework.Plugins.PluginManager;
 
 namespace NoBigTruck
@@ -34,7 +33,7 @@ namespace NoBigTruck
             new ModVersion(new Version("1.0"), new DateTime(2020, 6, 19)),
         };
 
-        protected override Version RequiredGameVersion => new Version(1, 17, 1, 2);
+        protected override Version RequiredGameVersion => new Version(1, 21, 1, 9);
 
 #if BETA
         public override bool IsBeta => true;
@@ -60,6 +59,11 @@ namespace NoBigTruck
         private static ulong AVOId => 1548831935ul;
         private static PluginSearcher AVOSearcher { get; } = PluginUtilities.GetSearcher(AVOName, AVOId);
         public static PluginInfo AVO => PluginUtilities.GetPlugin(AVOSearcher);
+
+        private static string VehicleSelectorName => "Vehicle Selector";
+        private static ulong VehicleSelectorId => 2882769913ul;
+        private static PluginSearcher VehicleSelectorSearcher { get; } = PluginUtilities.GetSearcher(VehicleSelectorName, VehicleSelectorId);
+        public static PluginInfo VehicleSelector => PluginUtilities.GetPlugin(VehicleSelectorSearcher);
 
         protected override void GetSettings(UIHelperBase helper)
         {
@@ -107,7 +111,7 @@ namespace NoBigTruck
         }
         private bool CargoTruckAI_ChangeVehicleType_Patch()
         {
-            return AddTranspiler(typeof(Patcher), nameof(Patcher.CargoTruckAI_ChangeVehicleType_Transpiler), typeof(CargoTruckAI), nameof(CargoTruckAI.ChangeVehicleType), new Type[] { typeof(VehicleInfo), typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(PathUnit.Position), typeof(uint), typeof(bool) });
+            return AddTranspiler(typeof(Patcher), nameof(Patcher.CargoTruckAI_ChangeVehicleType_Transpiler), typeof(CargoTruckAI), nameof(CargoTruckAI.ChangeVehicleType), new Type[] { typeof(VehicleInfo), typeof(ushort), typeof(Vehicle).MakeByRefType(), typeof(PathUnit.Position), typeof(uint) });
         }
         private bool VehicleManager_RefreshTransferVehicles_Patch()
         {
@@ -132,6 +136,13 @@ namespace NoBigTruck
 
         public static IEnumerable<CodeInstruction> StartTransfer_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
+            if ((Mod.VehicleSelector?.isEnabled ?? false) && original.DeclaringType != typeof(OutsideConnectionAI))
+            {
+                foreach (var instruction in instructions)
+                    yield return instruction;
+                yield break;
+            }
+
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Callvirt && instruction.operand == ReplaceMethod)
@@ -148,6 +159,13 @@ namespace NoBigTruck
         }
         public static IEnumerable<CodeInstruction> WarehouseAI_StartTransfer_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
+            if (Mod.VehicleSelector?.isEnabled ?? false)
+            {
+                foreach (var instruction in instructions)
+                    yield return instruction;
+                yield break;
+            }
+
             var method = AccessTools.Method(typeof(WarehouseAI), nameof(WarehouseAI.GetTransferVehicleService));
             foreach (var instruction in instructions)
             {
@@ -164,6 +182,13 @@ namespace NoBigTruck
         }
         public static IEnumerable<CodeInstruction> CargoTruckAI_ChangeVehicleType_Transpiler(MethodBase original, ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
+            if (Mod.VehicleSelector?.isEnabled ?? false)
+            {
+                foreach (var instruction in instructions)
+                    yield return instruction;
+                yield break;
+            }
+
             foreach (var instruction in instructions)
             {
                 if (instruction.opcode == OpCodes.Callvirt && instruction.operand == ReplaceMethod)
