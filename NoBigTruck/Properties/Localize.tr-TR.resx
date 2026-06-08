@@ -132,13 +132,11 @@
   <data name="Mod_Description" xml:space="preserve">
     <value>Büyük kamyonlar mağazalara ürün götüremez</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Mod_WhatsNewMessage1_3" xml:space="preserve">
+    <value>[GÜNCELLENDİ] Plazas &amp; Promenades DLC desteği eklendi.
+
+[ÇEVİRİ] Lehçe ve Romence çeviriler eklendi.</value>
+  </data>
   <data name="RulesTab" xml:space="preserve">
     <value>Kurallar</value>
   </data>

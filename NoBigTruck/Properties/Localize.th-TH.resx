@@ -118,51 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddNewRule" xml:space="preserve">
-    <value>Új szabály hozzáadása</value>
+    <value>เพิ่มเงื่อนไขใหม่</value>
   </data>
   <data name="CheckTargetSize" xml:space="preserve">
-    <value>Ellenőrizze a cél épületek méretét</value>
+    <value>ตรวจสอบขนาดของอาคารเป้าหมาย</value>
   </data>
   <data name="MaxLength" xml:space="preserve">
-    <value>Max. épület hosszúság</value>
+    <value>ความยาวสูงสุดของอาคาร</value>
   </data>
   <data name="MaxWidth" xml:space="preserve">
-    <value>Max. épület szélesség</value>
+    <value>ความกว้างสูงสุดของอาคาร</value>
   </data>
   <data name="Mod_Description" xml:space="preserve">
-    <value>Nagy teherautók nem szállítanak árut boltokba</value>
+    <value>ห้ามรถบรรทุกขนาดใหญ่ส่งสินค้าไปยังร้านค้า</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage1_3" xml:space="preserve">
+    <value>[UPDATED] เพิ่มการรองรับ DLC Plazas &amp; Promenades
+[TRANSLATION] แปลภาษาโปแลนด์และโรมาเนียเพิ่มเติม</value>
   </data>
   <data name="RulesTab" xml:space="preserve">
-    <value>Szabályok</value>
+    <value>เงื่อนไข</value>
   </data>
   <data name="Source" xml:space="preserve">
-    <value>Forrás épület típusa</value>
+    <value>ประเภทของอาคารต้นทาง</value>
   </data>
   <data name="SourceIndustry" xml:space="preserve">
-    <value>Ipar</value>
+    <value>อุตสาหกรรม</value>
   </data>
   <data name="SourceOutside" xml:space="preserve">
-    <value>Kívül</value>
+    <value>นอกเมือง</value>
   </data>
   <data name="SourceWarehouse" xml:space="preserve">
-    <value>Raktár</value>
+    <value>คลังสินค้า</value>
   </data>
   <data name="Target" xml:space="preserve">
-    <value>Cél épület típusa</value>
+    <value>ประเภทของอาคารปลายทาง</value>
   </data>
   <data name="TargetEco" xml:space="preserve">
-    <value>Öko</value>
+    <value>เชิงนิเวศ</value>
   </data>
   <data name="TargetHigh" xml:space="preserve">
-    <value>Magas</value>
+    <value>ความหนาแน่นสูง</value>
   </data>
   <data name="TargetLeisure" xml:space="preserve">
-    <value>Szabadidő</value>
+    <value>สันทนาการ</value>
   </data>
   <data name="TargetLow" xml:space="preserve">
-    <value>Alacsony</value>
+    <value>ความหนาแน่นต่ำ</value>
   </data>
   <data name="TargetTourist" xml:space="preserve">
-    <value>Turista</value>
+    <value>นักท่องเที่ยว</value>
   </data>
 </root>
